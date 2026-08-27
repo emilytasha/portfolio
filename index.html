@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfólio de Emily Tasha, estudante de Design Gráfico em Curitiba. Projetos de identidade visual, estamparia, conteúdo digital e edição.">
+  <title>Emily Tasha — Portfólio de Design Gráfico</title>
+  <style>
+    :root {
+      --bg: #f3f3f1;
+      --ink: #171717;
+      --muted: #676767;
+      --line: #1d1d1d;
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    img { display: block; width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin-inline: auto;
+    }
+
+    .rule {
+      height: 1px;
+      background: var(--line);
+      width: 100%;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(243,243,241,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(23,23,23,.14);
+    }
+
+    .nav-inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: .08em;
+      font-size: .95rem;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: #333;
+      font-size: .92rem;
+    }
+    .menu a { border-bottom: 1px solid transparent; }
+    .menu a:hover { border-color: currentColor; }
+
+    .hero {
+      min-height: calc(100vh - 68px);
+      display: grid;
+      align-items: center;
+      padding: 56px 0 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 42px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .82rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 48px;
+      height: 1px;
+      background: var(--ink);
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(4.3rem, 12vw, 10rem);
+      line-height: .75;
+      letter-spacing: -.075em;
+      text-transform: uppercase;
+      max-width: 850px;
+    }
+    .hero h1 .serif {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: -.055em;
+      transform: translateX(7%);
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 22px;
+      padding-bottom: 8px;
+    }
+    .hero-side p {
+      max-width: 470px;
+      margin: 0;
+      font-size: clamp(1rem, 1.4vw, 1.22rem);
+      color: #333;
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      text-transform: uppercase;
+      font-size: .8rem;
+      letter-spacing: .12em;
+      color: var(--muted);
+    }
+
+    section {
+      padding: 100px 0;
+      scroll-margin-top: 80px;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      align-items: start;
+      margin-bottom: 52px;
+    }
+    .section-kicker {
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--muted);
+      padding-top: 11px;
+    }
+    .section-title {
+      margin: 0;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: .88;
+      letter-spacing: -.06em;
+      text-transform: uppercase;
+    }
+    .section-title em {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      text-transform: none;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 54px;
+      align-items: center;
+    }
+    .about-copy {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      font-size: 1.08rem;
+    }
+    .about-copy p { margin: 0; }
+    .portrait {
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #ddd;
+    }
+    .portrait img { height: 100%; object-fit: cover; }
+
+    .skills {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .skills p {
+      max-width: 720px;
+      font-size: 1.08rem;
+      margin: 20px 0 0;
+    }
+    .skill-orbit {
+      position: relative;
+      min-height: 500px;
+    }
+    .skill {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: 185px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #202020;
+      color: #fff;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 1.02rem;
+      line-height: 1.15;
+      padding: 24px;
+    }
+    .skill:nth-child(1) { top: 0; left: 12%; }
+    .skill:nth-child(2) { right: 2%; top: 30%; }
+    .skill:nth-child(3) { left: 10%; bottom: 0; }
+    .skill-orbit::before,
+    .skill-orbit::after {
+      content:"";
+      position:absolute;
+      height:1px;
+      background:#777;
+      transform-origin:left center;
+      z-index:-1;
+    }
+    .skill-orbit::before { width: 230px; top: 165px; left: 42%; transform: rotate(39deg); }
+    .skill-orbit::after { width: 235px; bottom: 150px; left: 41%; transform: rotate(-42deg); }
+
+    .project {
+      padding: 76px 0;
+      border-top: 1px solid var(--line);
+    }
+    .project:last-child { border-bottom: 1px solid var(--line); }
+
+    .project-top {
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      gap: 56px;
+      margin-bottom: 44px;
+    }
+    .project-no {
+      font-size: .84rem;
+      letter-spacing: .12em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .project h3 {
+      margin: 12px 0 22px;
+      font-size: clamp(3rem, 6.8vw, 6.2rem);
+      line-height: .84;
+      letter-spacing: -.06em;
+      text-transform: uppercase;
+    }
+    .project h3 em {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      text-transform: none;
+    }
+    .project-copy {
+      columns: 2;
+      column-gap: 34px;
+      font-size: 1.02rem;
+    }
+    .project-copy p { margin: 0 0 16px; break-inside: avoid; }
+
+    .gallery {
+      display: grid;
+      gap: 14px;
+    }
+    .gallery.four { grid-template-columns: repeat(4, 1fr); }
+    .gallery.two { grid-template-columns: repeat(2, 1fr); }
+    .gallery.three { grid-template-columns: 1.25fr 1fr 1fr; }
+
+    .gallery button {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: zoom-in;
+      overflow: hidden;
+      border-radius: 14px;
+      min-height: 260px;
+    }
+    .gallery img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform .55s ease;
+    }
+    .gallery button:hover img { transform: scale(1.025); }
+
+    .other-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px 56px;
+      align-items: start;
+    }
+    .other-grid .copy {
+      font-size: 1.07rem;
+      columns: 2;
+      column-gap: 28px;
+    }
+    .other-grid .copy p { margin: 0 0 14px; }
+
+    .contact {
+      padding-bottom: 64px;
+    }
+    .contact-card {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 54px;
+      align-items: center;
+      padding: 52px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+    }
+    .contact-photo {
+      max-width: 370px;
+      aspect-ratio: 1 / 1.06;
+      overflow: hidden;
+      border-radius: 18px;
+    }
+    .contact-photo img { height: 100%; object-fit: cover; }
+
+    .contact h2 {
+      margin: 0 0 26px;
+      font-size: clamp(3.2rem, 6vw, 6rem);
+      line-height: .9;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+    }
+    .contact h2 em {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      text-transform: none;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 13px;
+      font-size: clamp(1rem, 2vw, 1.35rem);
+    }
+    .contact-links a,
+    .contact-links span {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(23,23,23,.18);
+    }
+    .icon {
+      width: 52px;
+      height: 52px;
+      flex: 0 0 52px;
+      display: grid;
+      place-items: center;
+      border: 1.5px solid var(--ink);
+      border-radius: 50%;
+      background: transparent;
+      padding: 10px;
+    }
+    .icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    footer {
+      padding: 0 0 34px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+    .footer-inner {
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.9);
+      display: none;
+      place-items: center;
+      z-index: 100;
+      padding: 28px;
+    }
+    .lightbox.open { display: grid; }
+    .lightbox img {
+      width: auto;
+      max-width: min(94vw, 1500px);
+      max-height: 90vh;
+      border-radius: 10px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      border: 1px solid #fff;
+      background: transparent;
+      color: #fff;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .section-head,
+      .about-grid,
+      .skills,
+      .project-top,
+      .other-grid,
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+      .hero { min-height: auto; }
+      .hero h1 .serif { transform: none; }
+      .hero-side { max-width: 620px; }
+      .section-head { gap: 14px; }
+      .about-copy { grid-template-columns: 1fr; }
+      .portrait { max-height: 650px; }
+      .project-copy, .other-grid .copy { columns: 1; }
+      .gallery.four { grid-template-columns: repeat(2, 1fr); }
+      .gallery.three { grid-template-columns: 1fr 1fr; }
+      .skill-orbit { min-height: 460px; max-width: 590px; }
+      .contact-photo { max-width: 100%; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(calc(100% - 26px), var(--max)); }
+      .nav-inner { min-height: 58px; }
+      .menu a:not(:last-child) { display: none; }
+      .hero { padding-top: 40px; }
+      .hero h1 { font-size: clamp(4rem, 22vw, 7rem); }
+      section { padding: 76px 0; }
+      .section-title { font-size: clamp(3.3rem, 17vw, 5rem); }
+      .skill-orbit {
+        display: grid;
+        gap: 12px;
+        min-height: auto;
+      }
+      .skill {
+        position: static;
+        width: 100%;
+        aspect-ratio: auto;
+        border-radius: 999px;
+        min-height: 78px;
+      }
+      .skill-orbit::before, .skill-orbit::after { display:none; }
+      .project { padding: 58px 0; }
+      .project h3 { font-size: clamp(3.4rem, 17vw, 5.5rem); }
+      .gallery.four, .gallery.two, .gallery.three {
+        grid-template-columns: 1fr;
+      }
+      .gallery button { min-height: 220px; }
+      .contact-card { padding: 24px; gap: 30px; }
+      .contact-links { font-size: .98rem; }
+      .footer-inner { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .gallery img { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#inicio">EMILY TASHA</a>
+      <div class="menu">
+        <a href="#sobre">Sobre</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+  </nav>
+
+  <header id="inicio" class="hero">
+    <div class="container">
+      <div class="rule"></div>
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Design Gráfico · 2026</div>
+          <h1>Port<span class="serif">fólio</span></h1>
+        </div>
+        <div class="hero-side">
+          <p>Projetos de design, identidade visual, experimentações acadêmicas e conteúdos criativos desenvolvidos por Emily Tasha.</p>
+          <div class="rule"></div>
+          <div class="hero-meta">
+            <span>Curitiba · PR</span>
+            <span>Emily Tasha</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="sobre">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">Perfil</div>
+          <h2 class="section-title"><em>Quem eu sou?</em></h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy reveal">
+            <p>Me chamo Emily Tasha, tenho 25 anos e moro em Curitiba. Atualmente, estudo na Unicesumar, onde curso o Superior de Tecnologia em Design Gráfico e venho desenvolvendo meus conhecimentos e habilidades na área por meio de projetos acadêmicos e experiências práticas.</p>
+            <p>Gosto de explorar o lado criativo do design e experimentar diferentes formas de transformar uma ideia em algo visual. Tenho interesse em descobrir novas áreas, desenvolver meu próprio estilo e continuar aprimorando minhas habilidades a cada projeto.</p>
+          </div>
+          <figure class="portrait reveal">
+            <img src="assets/p2_1.webp" alt="Retrato de Emily Tasha em um parque">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="habilidades">
+      <div class="container skills">
+        <div class="reveal">
+          <div class="section-kicker">Ferramentas & prática</div>
+          <h2 class="section-title">Habilidades</h2>
+          <p>Tenho experiência na criação de peças e materiais visuais utilizando principalmente o Canva, ferramenta com a qual atualmente possuo maior familiaridade. Também tenho conhecimentos em edição de imagens e na criação e edição de vídeos por meio do CapCut. Atualmente, venho aprimorando minhas habilidades no Adobe Photoshop e Illustrator, buscando ampliar minhas possibilidades criativas dentro do design.</p>
+        </div>
+        <div class="skill-orbit reveal" aria-label="Principais habilidades">
+          <div class="skill">Edição de<br>vídeo</div>
+          <div class="skill">Criação de<br>designs</div>
+          <div class="skill">Edição de<br>imagem</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projetos">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">Seleção</div>
+          <h2 class="section-title">Projetos <em>em destaque</em></h2>
+        </div>
+
+        <article class="project">
+          <div class="project-top reveal">
+            <div>
+              <div class="project-no">Projeto 01 · Sketchbook</div>
+              <h3>Primeiro <em>projeto</em></h3>
+            </div>
+            <div class="project-copy">
+              <p>Meu primeiro projeto acadêmico consistiu na criação de um sketchbook para acompanhar o desenvolvimento das atividades ao longo do curso. Nele, são reunidas ideias, práticas de design, desenhos, rascunhos e outras experimentações criativas.</p>
+              <p>Para iniciar o projeto, desenvolvi alguns esboços digitalmente e manualmente, organizando minhas ideias e definindo uma direção visual antes de transferi-las para o caderno.</p>
+            </div>
+          </div>
+          <div class="gallery four reveal">
+            <button class="zoom"><img src="assets/p4_1.webp" alt="Capa do sketchbook"></button>
+            <button class="zoom"><img src="assets/p4_2.webp" alt="Página do sketchbook com mapa mental"></button>
+            <button class="zoom"><img src="assets/p4_3.webp" alt="Página de colagem e experimentação visual"></button>
+            <button class="zoom"><img src="assets/p4_4.webp" alt="Página com luas e olhos desenhados"></button>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-top reveal">
+            <div>
+              <div class="project-no">Projeto 02 · Estamparia</div>
+              <h3>Segundo <em>projeto</em></h3>
+            </div>
+            <div class="project-copy">
+              <p>Para o segundo trabalho, foi proposto o desenvolvimento de uma estampa para camiseta com base em um movimento artístico. O Surrealismo foi escolhido como inspiração por permitir explorar ideias que vão além da realidade e transformar pensamentos e elementos do imaginário em representações visuais.</p>
+              <p>A estampa representa pensamentos, imaginação e o “mundo dos sonhos” por meio de um rosto minimalista acompanhado de elementos como nuvens, céu e lua. A composição foi pensada para manter um visual leve e equilibrado, utilizando poucos elementos e evitando excessos.</p>
+              <p>A customização foi realizada diretamente na camiseta, começando com um esboço a lápis e sendo finalizada com marcador e tinta para tecido.</p>
+            </div>
+          </div>
+          <div class="gallery two reveal">
+            <button class="zoom"><img src="assets/p5_1.webp" alt="Camiseta com pequena estampa surrealista"></button>
+            <button class="zoom"><img src="assets/p5_2.webp" alt="Camiseta com rosto, nuvens e elementos celestiais"></button>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-top reveal">
+            <div>
+              <div class="project-no">Projeto 03 · Branding & embalagem</div>
+              <h3>Terceiro <em>projeto</em></h3>
+            </div>
+            <div class="project-copy">
+              <p>O terceiro projeto foi desenvolvido a partir da criação da identidade visual da Lumma. A proposta era criar um produto e sua embalagem a partir de um “universo de inspiração”. Com base nas minhas outras criações, que apresentam características astrológicas e naturais, decidi desenvolver uma vela voltada para momentos de calma e meditação.</p>
+              <p>Após definir o conceito da Lumma, a identidade visual foi aplicada aos diferentes elementos que compõem a marca, desde o logotipo até a embalagem da vela.</p>
+              <p>Busquei manter uma composição simples e delicada, utilizando os elementos celestiais de forma pontual para não sobrecarregar o visual. O resultado une o universo místico e celestial a uma estética elegante e minimalista.</p>
+            </div>
+          </div>
+          <div class="gallery two reveal">
+            <button class="zoom"><img src="assets/p6_1.webp" alt="Mockup da vela Lumma e sua embalagem"></button>
+            <button class="zoom"><img src="assets/p6_2.webp" alt="Estrutura e visual da embalagem Lumma"></button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="outros">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">Experiência prática</div>
+          <h2 class="section-title">Outros <br><em>projetos</em></h2>
+        </div>
+
+        <div class="other-grid">
+          <div class="copy reveal">
+            <p>Participei da movimentação e organização de conteúdos para um perfil profissional no Instagram, contribuindo com a criação de materiais voltados à divulgação e à comunicação visual. Durante esse processo, pude explorar diferentes formatos e adaptar cada conteúdo de acordo com a proposta da publicação.</p>
+            <p>Entre os materiais desenvolvidos estão cartões de visita, folhetos, edições de imagens, vídeos e outras publicações para as redes sociais. A experiência me permitiu praticar diferentes áreas do design e compreender melhor a produção de conteúdos para um perfil profissional.</p>
+          </div>
+          <div class="gallery three reveal">
+            <button class="zoom"><img src="assets/p7_1.webp" alt="Material gráfico para perfil profissional"></button>
+            <button class="zoom"><img src="assets/p7_2.webp" alt="Peça de comunicação visual para redes sociais"></button>
+            <button class="zoom"><img src="assets/p7_3.webp" alt="Peça de divulgação criada para redes sociais"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="contact">
+      <div class="container">
+        <div class="contact-card reveal">
+          <div class="contact-photo">
+            <img src="assets/p8_1.webp" alt="Retrato de Emily Tasha">
+          </div>
+          <div>
+            <div class="section-kicker">Contato</div>
+            <h2>Let’s <em>connect</em></h2>
+            <div class="contact-links">
+              <a href="tel:+5541999400011">
+                <span class="icon"><img src="assets/contact_phone.png" alt="Ícone de telefone"></span>
+                <span>(41) 9 9940-0011</span>
+              </a>
+              <a href="https://www.linkedin.com/in/emily-tasha/" target="_blank" rel="noopener">
+                <span class="icon"><img src="assets/contact_web.png" alt="Ícone de internet"></span>
+                <span>Emily Tasha Rodrigues</span>
+              </a>
+              <a href="mailto:emilytashasalesrodrigues@gmail.com">
+                <span class="icon"><img src="assets/contact_email.png" alt="Ícone de e-mail"></span>
+                <span>emilytashasalesrodrigues@gmail.com</span>
+              </a>
+              <span>
+                <span class="icon"><img src="assets/contact_location.png" alt="Ícone de localização"></span>
+                <span>Curitiba, Paraná</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>Emily Tasha · Design Gráfico</span>
+      <span>Portfólio 2026</span>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" aria-label="Fechar imagem">×</button>
+    <img src="" alt="">
+  </div>
+
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealItems.forEach(item => io.observe(item));
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+
+    document.querySelectorAll('.zoom img').forEach(img => {
+      img.parentElement.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>
